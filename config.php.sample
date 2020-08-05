@@ -1,0 +1,64 @@
+<?php 
+
+global $confirmPass, $oldPass, $seeOutput, $pathToChpasswd, 
+       $pathToPw, $debug, $minimumPasswordLength;
+
+
+
+// Set this to the minimum length of passwords you want
+// to enforce.  Set to zero to disable this check
+//
+$minimumPasswordLength = 8;
+
+
+
+// Set this to 1 if you want the user to have to enter 
+// their new password twice.  Set to zero otherwise,
+// but why would you do that?
+//
+$confirmNewPass = 1;
+
+
+
+// Set this to 1 to require the user to enter thier current 
+// password in order to change it (FreeBSD ('pw' utility) 
+// users typically set this to zero; others can (and should!) 
+// leave this as is.
+//
+$confirmOldPass = 1;
+//$confirmOldPass = 0;
+ 
+
+
+// Please include the full path (not relative) to the chpasswd program
+// ONLY if you are NOT using the one included with this plugin!
+//
+$overridePathToChpasswd = '';
+
+
+
+// Use this setting only if you want to use the pw program to change 
+// your password (available on e.g. FreeBSD).  Include full path 
+// (not relative) to the pw program.  This will override the chpasswd
+// program, so leave it empty if you are using chpasswd.
+//
+$pathToPw = '';
+
+
+
+// If you want see the output of the chpasswd program (usually
+// only useful for debugging purposes, set this to 1
+//
+$seeOutput = 0;
+
+
+
+// For debugging only, set this variable to 1.  WARNING: this will 
+// echo any password information you enter in clear text!  Please 
+// use this setting with care!
+//
+$debug = 0;
+
+
+
+?>

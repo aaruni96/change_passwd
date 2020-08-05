@@ -1,0 +1,3 @@
+#!/bin/sh
+xgettext --keyword=_ -keyword=N_  --default-domain=change_passwd \
+    *.php --output=change_passwd.pot

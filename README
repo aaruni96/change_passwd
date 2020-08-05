@@ -1,0 +1,212 @@
+Change Passwd plugin for SquirrelMail
+-------------------------------------
+Thiago Melo de Paula <thiagomp@coc.com.br>
+Paul Lesneiwski <pdontthink@angrynerds.com>
+Ver 4.1, Apr 25, 2004
+
+This is a Squirrelmail plugin to allow your users to change 
+his/her system password in /etc/passwd or /etc/shadow
+
+A suid C program is used to access and change the password,
+so note that this requires some special setup on your part.
+
+
+---REQUESTING HELP-----------------------
+
+If you have any problems getting this plugin to work, please
+make sure to read the TROUBLESHOOTING section below and include 
+the information requested below with your help request, otherwise 
+you will probably be ignored.
+
+Please send help requests to the squirrelmail-plugins mailing
+list:  information on this mailing list can be found on the 
+SquirrelMail web site.  Contacting the authors of this plugin
+should be your last resort (but we don't bite, either!).
+
+Please include this information with your help request:
+
+  - Operating system name and version
+
+  - Web server name and version
+
+  - User and group that your web server is running as...
+
+    Try this from the command line if you are running 
+    Apache and do not have this information:
+
+      egrep "^[Uu][Ss][Ee][Rr]" APACHE_CONF_FILE | sed 's/^[^ ][^ ]* \([^ ][^ ]*\).*/\1/;q'
+      egrep "^[Gg][Rr][Oo][Uu][Pp]" APACHE_CONF_FILE | sed 's/^[^ ][^ ]* \([^ ][^ ]*\).*/\1/;q'
+
+    Where APACHE_CONF_FILE should be replaced BY YOU with 
+    the location of your httpd.conf Apache configuration file.  
+    Typical locations for this file are:
+
+      /etc/httpd.conf
+      /etc/httpd/conf/httpd.conf
+
+    Or try to find it by doing this:
+
+      locate httpd.conf
+
+    So, for example, on a Red Hat system, I can get the user 
+    that Apache runs as by typing this at the command line:
+
+      egrep "^[Uu][Ss][Ee][Rr]" /etc/httpd/conf/httpd.conf | sed 's/^[^ ][^ ]* \([^ ][^ ]*\).*/\1/;q'
+
+    And I get this back:
+
+      apache
+
+  - PHP version and configuration details
+   
+  - A cut and paste of the directory listing for this plugin:
+
+      cd /path/to/squirrelmail/plugins/change_passwd
+      ls -alF
+
+  - A copy of the exact results of the output of steps 3 and 4
+    from the TROUBLESHOOTING section below
+
+
+---TROUBLESHOOTING-----------------------
+
+1) Please read the INSTALL file and verify that you have actually
+   followed every step.
+
+2) Please verify that the ownership and permissions of the chpasswd
+   binary (executable) file are correct.  The file should be executable 
+   (and readable) by your web server user, and owned by root (with 
+   suid bit set) (see step number 3 in the INSTALL file).  Its listing 
+   should appear similar to this:
+
+   -rwsr-x---    1 root     apache       9873 Oct 21  2002 chpasswd*
+
+   Read the support section above to determine if the group ownership
+   of this file should be "apache" or "nobody", etc.  It should exactly
+   match the group which your web server is running as.
+
+3) Turn on $seeOutput in config.php to see if the chpasswd program is
+   returning any errors of note.
+
+4) Please turn on the $debug flag in config.php and attempt to change
+   your password.  It will show you two commands used to run the 
+   chpasswd program from the command line - please paste them onto 
+   the command line EXACTLY as they are shown and see if there are any
+   errors.
+
+   It should look something like this:
+
+     cd /path/to/squirrelmail/plugins
+     ../plugins/change_passwd/chpasswd 'my_user_name' 'my_old_pwd' 'my_new_pwd' 2>&1
+
+   Make sure the user name and password information matches and that 
+   the command can be run from the command line.  If you are having 
+   problems on the command line, you might want to look for a different 
+   version of the chpasswd program (either on the Internet or on your 
+   own machine by typing "locate chpasswd").
+
+
+---TODO----------------------------------
+
+ * Along with checking for the config.php file, check that the
+   permissions on the executable are correct (? this should not
+   be done in the case of FreeBSD... is there any reason the 
+   permissions will be different in other contexts?)
+
+
+---CHANGE LOG----------------------------
+
+Ver 4.1, Apr 25, 2004 (Paul Lesneiwski <pdontthink@angrynerds.com>)
+  - Forgot to bind text domain!  Thanks to Fredrick Jervfors <fredrik@fimbul.net>.
+  - Minor adjustment in output strings
+  - Minor XHTML fixes
+  - Added Swedish translation.  Thanks to Fredrick Jervfors <fredrik@fimbul.net>.
+  - Removed stray debug statements.
+
+Ver 4.0, Apr 22, 2004 (Paul Lesneiwski <pdontthink@angrynerds.com>)
+  - PLEASE NOTE that this version requires that you upgrade to 
+    version 1.3 of the Compatibility Plugin
+  - PLEASE NOTE that due to extensive changes made in this version
+    that you should ENTIRELY remove your old change_passwd directory
+    and reinstall this version from scratch.
+  - Security fix: buffer overflow problem thwarted
+  - Security fix: correctly sanitized user input
+  - Updated to use MD5 password encryption (can now accomodate
+    passwords greater than 8 characters) (Thanks to Victor 
+    Clodoaldo Salas Pumacayo <nmag@softhome.net>)
+  - Switched to gettext style internationalization instead of one-
+    off custom implementation.  Translators please get in touch with
+    your .po files!
+  - Revised README file with detailed help and support sections
+  - Better organized input validation
+  - More secure verification of username and current password
+  - Lots of HTML fixes/cleanup
+
+Ver 3.1.1, Jul 30, 2003 (Paul Lesneiwski <pdontthink@angrynerds.com>)
+  - Fixed FreeBSD functionality - oops! - thanks to Shane Robinson
+    <shane@barefeetstudios.com> for noticing!
+  - Added ability to specify minimum password length in config
+    file.  The plugin will enforce the given length, however
+    this will not enforce password lengths in any other context!
+  - Added Spanish and Mexican Spanish language files (Thanks to David
+    Limon Romero <dlr@mega.net.mx>)
+
+Ver 3.1, Jul 12, 2003 (Paul Lesneiwski <pdontthink@angrynerds.com>)
+  - Added debugging functionality
+  - Fixed logout link when forcing users to log out after password change
+    (Thanks to Robert Tom <robert@estrell.com>)
+  - Added support for FreeBSD's 'pw' password change utility (Thanks to 
+    Rickard Lind <rickard.lind@ntier.se>)
+  - Fixed file include functionality to be more in line
+    with the SquirrelMail paradigm; should fix anomalous
+    behaviors some people were seeing
+  - Fixed problems when trying to keep users logged in after password change
+  - Force logout to both frames
+  - Fixed color problems with some themes
+  - Now escapes shell metacharacters in passwords
+  - Moved config.php to config.php.sample for hassle-free upgrades
+  - Fixed erroneous error reporting
+  - Added Italian language file (Thanks to Massimiliano Spini 
+    <massimiliano.spini@outsourcing.albacom.net>)
+  - Added Swedish language file (Thanks to Rickard Lind 
+    <rickard.lind@ntier.se>)
+  - Added Estonian language file (Thanks to Erkki Liba
+    <lips@annenk.tartu.ee>)
+  - Added Romanian language file (Thanks to Iosif Fettich
+    <ifettich@netsoft.ro>)
+  - Added German language file (Thanks to Cavegn Christian
+    <ichris@rubbish.ch>)
+  - Added Dutch language file (Thanks to Anton Osinga
+    <rzch0s@toonsmachine.homelinux.com>)
+  - Added French language file (Thanks to LoÅE de VAULX
+    <loic.de-vaulx@webinov.com>)
+
+Ver 3.0.1, Apr 18, 2003 (Jukka Vuola <juki@linja.org>)
+  - Added Finnish language file
+
+Ver 3.0, Apr 09, 2003 - (Paul Lesneiwski <pdontthink@angrynerds.com>)
+  - Corrections to English language file
+  - Lots of E_ALL fixes
+  - Added compatibility with SquirrelMail 1.4 (while also retaining 
+    backward compatibility with version 1.2.x)
+  - Added compatibility with Plugin Updates plugin
+  - Added register_globals=Off compatibility
+  - Minor HTML formatting fixes
+
+Ver 2.0, Out 21, 2002 - (Thiago Melo de Paula)
+  - I made a C program to diminish the complexity of the plugin, now you don't need worry about cgi.
+  - After password change, the user aren't disconnected of SM. You can choose this in the config.php.
+    The default is that the user don't will be disconnected.
+  - The config.php file have more options to configure the plugin.
+  - This plugin was tested with SM 1.2.7 and 1.2.8
+
+Ver 1.1, Sep 05, 2002 - (Thiago Melo de Paula)
+  - The config.php file have more options to configure the plugin.
+  - If the password change is successful, the user will be disconnected of SM to connect with new password.
+  - I tried to detail the README file better.
+  - Removed some useless buttons. Now just have the submit button.
+  - Correct the number of initial version of the README file!!!!
+
+Ver 1.0, Sep 01, 2002 - (Thiago Melo de Paula)
+  - Initial Version!
+

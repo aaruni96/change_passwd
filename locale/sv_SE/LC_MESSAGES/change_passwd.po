@@ -1,0 +1,146 @@
+# Swedish (sv_SE) change_passwd Translation (SquirrelMail plugin)
+# Copyright (C) 1999-2004 The Squirrelmail Development Team
+# This file is distributed under the same license as the SquirrelMail package.
+# Fredrik Jervfors <sqm_admin@fimbul.net> 2004
+# $Id: change_passwd-4.0-1.2.8.po Exp $
+msgid ""
+msgstr ""
+"Project-Id-Version: change_passwd-4.0-1.2.8\n"
+"POT-Creation-Date: 2004-04-23 03:59-0700\n"
+"PO-Revision-Date: 2004-04-24 14:28+0200\n"
+"Last-Translator: Fredrik Jervfors <sqm_admin@fimbul.net>\n"
+"Language-Team: Swedish <squirrelmail-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: functions.php:35 options.php:268
+msgid "Change Password"
+msgstr "Byt lösenord"
+
+#: functions.php:37
+msgid "Use this to change your email password."
+msgstr "Här kan du ändra ditt lösenord."
+
+#: options.php:76
+msgid "Could not determine your username."
+msgstr "Det gick inte att avgöra vilket användarnamn du har."
+
+#: options.php:78 options.php:241
+msgid "Please contact your system administrator."
+msgstr "Kontakta systemadministatören."
+
+#: options.php:81
+msgid "Please enter your current password."
+msgstr "Ange ditt nuvarande lösenord."
+
+#: options.php:86
+msgid "Please enter your new password."
+msgstr "Ange ditt nya lösenord."
+
+#: options.php:91
+msgid "Please re-enter your new password."
+msgstr "Bekräfta ditt nya lösenord genom att ange det igen."
+
+#: options.php:100 options.php:287
+#, c-format
+msgid "Your new password must be at least %s characters long."
+msgstr "Det nya lösenordet måste bestå av minst %s tecken."
+
+#: options.php:112
+msgid "The confirmation of your new password did not match."
+msgstr "Det nya lösenordet och bekräftelsen därav överensstämde inte."
+
+#: options.php:137
+msgid "Your current password is not correct."
+msgstr "Du har inte korrekt angivit ditt nuvarande lösenord."
+
+#: options.php:208
+msgid "Your password was changed successfully."
+msgstr "Lösenordet är nu bytt."
+
+#: options.php:222
+msgid "The password was modified successfully"
+msgstr "Lösenordet är nu bytt."
+
+#: options.php:223
+msgid "Missing username"
+msgstr "Användarnamnet saknas"
+
+#: options.php:224
+msgid "Missing new password"
+msgstr "Det nya lösenordet saknas"
+
+#: options.php:225
+msgid "Missing current password"
+msgstr "Det nuvarande lösenordet saknas"
+
+#: options.php:226
+#, c-format
+msgid "The password for this user cannot be changed due to security constraints: %s"
+msgstr "Lösenordet för användaren &quot;%s&quot; kan inte ändras p.g.a. säkerhetskäl."
+
+#: options.php:227
+msgid "The new password is equal to the current password. Choose another password."
+msgstr "Det nya lösenordet är samma som det nuvarande. Välj ett annat lösenord."
+
+#: options.php:228 options.php:229
+msgid "Could not read password file"
+msgstr "Kunde inte läsa lösenordsfilen"
+
+#: options.php:230
+msgid "Temporary file could not be opened"
+msgstr "Kunde inte öppna en temporär fil"
+
+#: options.php:231
+msgid "Current password is incorrect"
+msgstr "Det nuvarande lösenordet är inkorrekt"
+
+#: options.php:232
+#, c-format
+msgid "User does not exist: %s"
+msgstr "Användaren &quot;%s&quot;existerar inte."
+
+#: options.php:233
+msgid "Virtual memory exhausted"
+msgstr "Slut på virtuellt minne"
+
+#: options.php:239
+msgid "An error has occurred while attempting to change your password."
+msgstr "Ett fel uppstod när lösenordet skulle ändras."
+
+#: options.php:247
+msgid "Command output:"
+msgstr "Kommandot gav resultatet:"
+
+#: options.php:252
+msgid "Return code:"
+msgstr "Returkod:"
+
+#: options.php:278
+msgid "Please read the following instructions before editing your password:"
+msgstr "Läs nedanstående instruktioner innan du ändrar ditt lösenord:"
+
+#: options.php:281
+msgid "You may use letters, numbers, and other special characters on your keyboard."
+msgstr "Du kan använda bokstäver, siffror och andra specialtecken på tangentbordet."
+
+#: options.php:283
+msgid "Passwords are case-sensititve, so an 'A' is not the same as an 'a'."
+msgstr "Lösenord är skiftlägeskänsliga, så ett &quot;A&quot; är inte samma sak som ett &quot;a&quot;."
+
+#: options.php:304
+msgid "Your user name:"
+msgstr "Ditt användarnamn:"
+
+#: options.php:311
+msgid "Current password:"
+msgstr "Nuvarande lösenord:"
+
+#: options.php:316
+msgid "New password:"
+msgstr "Nytt lösenord:"
+
+#: options.php:321
+msgid "Confirm new password:"
+msgstr "Bekräfta det nya lösenordet:"

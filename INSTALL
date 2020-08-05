@@ -1,0 +1,73 @@
+Installing Change Passwd Plugin
+===============================
+
+1) Start with untaring the file into the plugins directory.
+   Here is a example for the 3.1 version of the change_passwd
+   plugin.
+
+  $ cd plugins
+  $ tar -zxvf change_passwd-3.1-1.2.8.tar.gz
+
+
+2) Change into the change_passwd directory, copy config.php.sample
+   to config.php and edit config.php, making adjustments as
+   you deem necessary.  
+
+  $ cd change_passwd
+  $ cp config.php.sample config.php
+  $ vi config.php
+
+
+3) Make sure the file permissions on the chpasswd file are
+   correct (unless you'll be using the 'pw' utility on
+   FreeBSD).  Substitue the name of the user that your web
+   server runs under for "apache" in the command below:
+
+  $ chown root:apache chpasswd
+  $ chmod 4750 chpasswd
+
+
+4) If you are running this under Solaris on a Sparc machine, you 
+   probably need to recompile the chpasswd.c file:
+
+  $ gcc -lcrypt -O -o chpasswd chpasswd.c
+
+5) Then go to your config directory and run conf.pl.  Choose
+   option 8 and move the plugin from the "Available Plugins"
+   category to the "Installed Plugins" category.  Save and exit.
+
+  $ cd ../../config/
+  $ ./conf.pl
+
+
+6) Also, please verify that you have the "compatibility" plugin
+   installed.
+
+
+
+Upgrading Change Passwd Plugin
+===============================
+
+PLEASE NOTE that due to extensive changes made in version 4.0,
+you should ENTIRELY remove any 3.x version of this plugin from
+your plugins directory and reinstall this version from scratch
+using the instructions above.
+
+1) Start with untaring the file into the plugins directory.
+   Here is a example for the 3.1 version of the change_passwd
+   plugin.
+
+  $ cd plugins
+  $ tar -zxvf change_passwd-3.1-1.2.8.tar.gz
+
+
+2) Change into the change_passwd directory, check your config.php 
+   file against the new version, to see if there are any new settings
+   that you must add to your config.php file.
+
+  $ diff -Nau config.php config.php.sample
+
+   Or simply replace your config.php file with the provided sample
+   and reconfigure the plugin from scratch (see step 2 under the
+   installation procedure above).
+
